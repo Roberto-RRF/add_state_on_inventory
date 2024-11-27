@@ -1,0 +1,24 @@
+<odoo>
+    <record id="view_stock_vpicktree_tree_inherit" model="ir.ui.view">
+        <field name="name">stock.vpicktree.tree.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree//field[@name='partner_id']" position="after">
+                <field name="estado"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_stock_picking_search_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.search.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='origin']" position="after">
+                <filter name="group_by_estado" string="Estado Rep" context="{'group_by': 'estado'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
